@@ -7,6 +7,7 @@ export default create((setState: SetState<MyState>, getState:GetState<MyState> )
     return {
         users:[],
         userDetail:undefined,
+        userPosts:[],
         isLoading:false,
         getUsers: async () => {
             setState({ isLoading : true })
@@ -17,11 +18,20 @@ export default create((setState: SetState<MyState>, getState:GetState<MyState> )
             //console.log(users)
             setState({ users,  isLoading: false, })
         },
+
+
         getUserDetail:async (userId:string | number) => {
             setState({ isLoading:true });
             const  result = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
             const userDetail = await result.json()
-            setState({ userDetail})
+            setState({ userDetail, isLoading:false})
         }, 
+
+        getUserPosts: async (userId: string | number ) => {
+            setState({ isLoading:true });
+            const  result = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+            const userPosts = await result.json()
+            setState({ userPosts , isLoading:false})
+        },
     }
 })

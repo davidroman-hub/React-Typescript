@@ -10,12 +10,20 @@ export interface User {
     website:string
 }
 
+export type UserPost = {
+    userId : string;
+    title:string;
+    body:string;
+    id:string;
+};
 
 export interface MyState { 
     users: User[];
     //userDetail:object | null;
-    userDetail:User | undefined
+    userDetail:User | undefined;
+    userPosts: UserPost[];
     getUsers: () => void; //vacio
     getUserDetail:(userId: string | number) => void;
+    getUserPosts:(userId: string | number ) => void;
     isLoading: boolean;
 }
