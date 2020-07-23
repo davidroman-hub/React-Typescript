@@ -1,7 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import React,{useEffect} from 'react';
 //import { useStore } from '../../Zustand-Store/Index';
 import useMyStore from '../../Zustand-Store/Index'
-import { stat } from 'fs';
+import UserItem from '../../Components/UserItem/Index'
+
+//import { stat } from 'fs';
 
 const fakeUsers: object = ({ id:1 , name:"juan", lastName:'Ortiz', age:25})
 const [useStore] = useMyStore;
@@ -29,10 +31,16 @@ type HomeProps = {
       })()
     },[])
 
+const renderUsers = ():undefined | JSX.Element[] => {
+    if(users && users.length) {
+      return users.map((user, index) => <UserItem key={index}{...user}/>);
+    }
+}
+
     return (
         <div>
             {isLoading ? "Cargando " : ""}
-            hello im home
+            {renderUsers()}
         </div>
     )
 }
