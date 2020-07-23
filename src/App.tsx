@@ -8,7 +8,7 @@ import UserDetail from '../src/Views/UserDetail/Index'
 function App() {
   return (
     <Router>
-        <Route path='/'>
+        <Route exact path='/'>
           <Home />
         </Route>
         <Route path='/user-detail/:userId'>

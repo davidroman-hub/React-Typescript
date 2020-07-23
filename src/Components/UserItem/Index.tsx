@@ -1,19 +1,30 @@
-import React from 'react'
+import React,{MouseEvent} from 'react'
 import { User } from '../../Zustand-Store/Types'
+import {useHistory} from 'react-router-dom'
 
 const UserItem = ({
     // address,
     // company,
     email,
-    // id,
+     id,
     name,
     phone,
     // username,
     // website,
         }:User) => {
 
+const history = useHistory()            
+const handleClick = (event:MouseEvent) => {
+    console.log(history);
+    history.push(`/user-detail/${id}`)
+    //alert(event.currentTarget)
+    // CAMBIO DE RUTA TO DO
+
+}
+//https://stackoverflow.com/questions/54433183/typescript-interface-signature-for-the-onclick-event-in-reactjs
+
 return(
-    <div style={{ margin:"10px",display:"flex" ,flexDirection:"column", border:'1px solid black', padding:10 }}> 
+    <div onClick={handleClick} style={{ margin:"10px",display:"flex" ,flexDirection:"column", border:'1px solid black', padding:10 }}> 
         <label>
             {name}
         </label>

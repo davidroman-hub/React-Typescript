@@ -1,23 +1,7 @@
 
 import create, {GetState, SetState} from 'zustand';
+import {MyState} from './Types'
 
-export interface User {
-    address:object;
-    company: object;
-    email:string;
-    id:number;
-    name:string;
-    phone:string;
-    username:string;
-    website:string
-}
-
-
-interface MyState { 
-    users: User[];
-    getUsers: () => void; //vacio
-    isLoading: boolean;
-}
 
 export default create((setState: SetState<MyState>, getState:GetState<MyState> ) : MyState => {
     return {

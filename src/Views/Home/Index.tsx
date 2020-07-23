@@ -31,9 +31,11 @@ type HomeProps = {
       })()
     },[])
 
-const renderUsers = ():undefined | JSX.Element[] => {
+const renderUsers = ():undefined | JSX.Element[] | string  => {
     if(users && users.length) {
       return users.map((user, index) => <UserItem key={index}{...user}/>);
+    } else if (isLoading){
+        return "Cargando";
     }
 }
 
